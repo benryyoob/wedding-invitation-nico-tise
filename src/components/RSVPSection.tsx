@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { supabase } from "@/lib/supabase";
 
 interface GuestMessage {
   id: number;
-  name: string;
-  attendance: string;
-  guestCount: number;
-  message: string;
-  date: string;
+  nama: string;
+  kehadiran: "Hadir" | "Tidak Hadir";
+  jumlah_tamu: number;
+  ucapan: string;
+  created_at: string;
 }
 
 export default function RSVPSection() {
@@ -20,32 +21,101 @@ export default function RSVPSection() {
 
   const [messages, setMessages] = useState<GuestMessage[]>([]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  // MENGAMBIL DATA RSVP DARI SUPABASE
+  const fetchMessages = async () => {
+    setIsLoading(true);
+    setError("");
+
+    const { data, error } = await supabase
+      .from("rsvp_nicotise")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Gagal mengambil data RSVP:", error);
+      setError("Gagal memuat ucapan. Silakan muat ulang halaman.");
+    } else {
+      setMessages(data as GuestMessage[]);
+    }
+
+    setIsLoading(false);
+  };
+
+  // MEMUAT DATA KETIKA KOMPONEN DIBUKA
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+
+  // MENGIRIM RSVP KE SUPABASE
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     if (!name.trim() || !attendance || !message.trim()) {
       return;
     }
 
-    const newMessage: GuestMessage = {
-      id: Date.now(),
-      name: name.trim(),
-      attendance,
-      guestCount: attendance === "Hadir" ? Number(guestCount) : 0,
-      message: message.trim(),
-      date: new Date().toLocaleDateString("id-ID", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
+    if (message.trim().length > 500) {
+      setError("Ucapan maksimal 500 karakter.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+    setSuccess("");
+
+    const newMessage = {
+      nama: name.trim(),
+      kehadiran: attendance,
+      jumlah_tamu:
+        attendance === "Hadir" ? Number(guestCount) : 0,
+      ucapan: message.trim(),
     };
 
-    setMessages((prev) => [newMessage, ...prev]);
+    const { error } = await supabase
+      .from("rsvp_nicotise")
+      .insert([newMessage]);
 
+    if (error) {
+      console.error("Gagal mengirim RSVP:", error);
+
+      setError(
+        "Konfirmasi gagal dikirim. Silakan coba kembali."
+      );
+
+      setIsSubmitting(false);
+      return;
+    }
+
+    // KOSONGKAN FORMULIR
     setName("");
     setAttendance("");
     setGuestCount("1");
     setMessage("");
+
+    setSuccess("Terima kasih! Konfirmasi dan ucapan Anda berhasil dikirim.");
+
+    // PERBARUI DAFTAR UCAPAN
+    await fetchMessages();
+
+    setIsSubmitting(false);
+  };
+
+  // FORMAT TANGGAL
+  const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "Asia/Makassar",
+    });
   };
 
   return (
@@ -60,7 +130,6 @@ export default function RSVPSection() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-
           <h2 className="rsvp-title">
             RSVP
           </h2>
@@ -145,11 +214,13 @@ export default function RSVPSection() {
                   value={guestCount}
                   onChange={(e) => setGuestCount(e.target.value)}
                 >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => (
-                    <option key={number} value={number}>
-                      {number} Orang
-                    </option>
-                  ))}
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
+                    (number) => (
+                      <option key={number} value={number}>
+                        {number} Orang
+                      </option>
+                    )
+                  )}
                 </select>
               </motion.div>
             )}
@@ -175,12 +246,31 @@ export default function RSVPSection() {
               </span>
             </div>
 
+            {/* PESAN STATUS */}
+            {error && (
+              <p role="alert" style={{ color: "#ff9999" }}>
+                {error}
+              </p>
+            )}
+
+            {success && (
+              <p role="status" style={{ color: "#d6b46a" }}>
+                {success}
+              </p>
+            )}
+
             {/* BUTTON */}
             <button
               type="submit"
               className="rsvp-submit"
+              disabled={isSubmitting}
             >
-              <span>Kirim Konfirmasi</span>
+              <span>
+                {isSubmitting
+                  ? "Mengirim..."
+                  : "Kirim Konfirmasi"}
+              </span>
+
               <span>✦</span>
             </button>
 
@@ -208,9 +298,14 @@ export default function RSVPSection() {
 
           <div className="rsvp-messages-list">
 
-            {messages.length === 0 ? (
+            {isLoading ? (
+              <div className="rsvp-empty">
+                <p>Memuat ucapan dan doa...</p>
+              </div>
+            ) : messages.length === 0 ? (
               <div className="rsvp-empty">
                 <span>✧</span>
+
                 <p>
                   Jadilah yang pertama memberikan ucapan dan doa.
                 </p>
@@ -226,29 +321,31 @@ export default function RSVPSection() {
                 >
                   <div className="rsvp-message-top">
                     <div>
-                      <h4>{item.name}</h4>
-                      <span>{item.date}</span>
+                      <h4>{item.nama}</h4>
+                      <span>
+                        {formatDate(item.created_at)}
+                      </span>
                     </div>
 
                     <span
                       className={`rsvp-status ${
-                        item.attendance === "Hadir"
+                        item.kehadiran === "Hadir"
                           ? "status-present"
                           : "status-absent"
                       }`}
                     >
-                      {item.attendance}
+                      {item.kehadiran}
                     </span>
                   </div>
 
-                  {item.attendance === "Hadir" && (
+                  {item.kehadiran === "Hadir" && (
                     <p className="rsvp-guest-count">
-                      {item.guestCount} Orang
+                      {item.jumlah_tamu} Orang
                     </p>
                   )}
 
                   <div className="rsvp-message-text">
-                    {item.message}
+                    {item.ucapan}
                   </div>
 
                   <div className="rsvp-message-ornament">
