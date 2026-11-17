@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.jpeg",
-        width: 630,
-        height: 1200,
+        width: 1200,
+        height: 630,
         alt: "The Wedding of Nico & Tise",
         type: "image/jpeg",
       },
