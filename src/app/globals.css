@@ -1,26 +1,2476 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --burgundy: #541525;
+  --dark-maroon: #300c18;
+  --gold: #d6b46a;
+  --champagne: #f3e6ca;
+  --ivory: #fff9ed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--dark-maroon);
+  color: var(--ivory);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* OPENING COVER */
+
+.opening-cover {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #76283b 0%,
+      #541525 50%,
+      #260912 100%
+    );
+  overflow: hidden;
+  position: relative;
+}
+
+.cover-border {
+  width: 100%;
+  max-width: 500px;
+  min-height: 90svh;
+  border: 1px solid var(--gold);
+  padding: 8px;
+  position: relative;
+}
+
+.cover-inner {
+  min-height: calc(90svh - 18px);
+  border: 1px solid rgba(214,180,106,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 35px 20px;
+}
+
+.cover-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cover-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  margin-bottom: 35px;
+}
+
+.cover-names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 9vw, 60px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--champagne);
+}
+
+.cover-names span {
+  display: block;
+  font-style: italic;
+  font-size: 36px;
+  color: var(--gold);
+  margin: 5px 0;
+}
+
+.gold-divider {
+  color: var(--gold);
+  margin: 30px 0;
+  font-size: 22px;
+}
+
+.cover-date {
+  color: var(--gold);
+  font-size: 15px;
+  letter-spacing: 4px;
+}
+
+.cover-invitation {
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 35px 0;
+  color: var(--champagne);
+}
+
+.open-button {
+  border: 1px solid var(--gold);
+  color: var(--champagne);
+  background: transparent;
+  padding: 14px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.open-button:hover {
+  background: var(--gold);
+  color: var(--dark-maroon);
+}
+
+.open-button span {
+  margin-right: 10px;
+}
+
+/* FLOWER DECORATION */
+
+.cover-flower {
+  position: absolute;
+  color: var(--gold);
+  font-size: 90px;
+  opacity: .65;
+}
+
+.flower-top {
+  top: -15px;
+  left: -10px;
+}
+
+.flower-bottom {
+  bottom: -15px;
+  right: -10px;
+}
+
+/* HERO SECTION */
+
+.hero-section {
+  min-height: 100svh;
+  padding: 80px 20px;
+  text-align: center;
+  background:
+    linear-gradient(
+      180deg,
+      #541525,
+      #310d19
+    );
+}
+
+.hero-content {
+  max-width: 500px;
+  margin: auto;
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  font-weight: 400;
+  color: var(--champagne);
+  margin: 25px 0 35px;
+}
+
+.photo-frame {
+  width: min(75%, 300px);
+  aspect-ratio: 3 / 4;
+  margin: auto;
+  padding: 12px;
+  border: 2px solid var(--gold);
+  outline: 1px solid rgba(214,180,106,.5);
+  outline-offset: 7px;
+  position: relative;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+      135deg,
+      #80505a,
+      #35121c
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+.frame-ornament {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 30px;
+}
+
+.hero-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 400;
+  margin-top: 45px;
+  color: var(--champagne);
+}
+
+.hero-names span {
+  display: block;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-date {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 13px;
+}
+
+.hero-quote {
+  margin-top: 45px;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--champagne);
+}
+
+.hero-bible {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 480px) {
+  .cover-border {
+    min-height: 85svh;
+  }
+
+  .cover-inner {
+    min-height: calc(85svh - 18px);
+  }
+
+  .cover-flower {
+    font-size: 65px;
+  }
+}
+
+/* FLORAL DECORATION */
+
+.flower-ornament {
+  position: absolute;
+  width: 180px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.flower-top {
+  top: 0;
+  left: 0;
+}
+
+.flower-bottom {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.flower-ornament svg {
+  width: 100%;
+  filter: drop-shadow(0 0 5px rgba(214,180,106,.25));
+}
+
+/* VINTAGE OVAL PHOTO FRAME */
+
+.vintage-frame {
+  position: relative;
+  z-index: 10;
+  width: min(65%, 260px);
+  aspect-ratio: 3 / 4;
+  margin: 45px auto;
+}
+@media (max-width: 480px) {
+  .vintage-frame {
+    width: 60%;
+  }
+}
+
+/* Bingkai luar emas */
+.frame-outer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    #d6b46a,
+    #8c682f,
+    #e8d39c,
+    #9a7134
+  );
+  box-shadow:
+    0 0 0 4px #541525,
+    0 0 0 5px var(--gold),
+    0 15px 35px rgba(0,0,0,.3);
+}
+
+/* Bingkai dalam */
+.frame-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 2px solid var(--champagne);
+  border-radius: 50%;
+  background: #3a1420;
+}
+
+/* Foto pasangan */
+.frame-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+/* Placeholder */
+.frame-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--gold);
+  letter-spacing: 4px;
+}
+
+.frame-corner {
+  position: absolute;
+  color: var(--gold);
+  font-size: 42px;
+  z-index: 2;
+  text-shadow: 0 0 8px rgba(214,180,106,.5);
+}
+
+.top-left {
+  top: -17px;
+  left: -12px;
+}
+
+.top-right {
+  top: -17px;
+  right: -12px;
+  transform: rotate(90deg);
+}
+
+.bottom-left {
+  bottom: -17px;
+  left: -12px;
+  transform: rotate(-90deg);
+}
+
+.bottom-right {
+  bottom: -17px;
+  right: -12px;
+  transform: rotate(180deg);
+}
+
+.frame-top-ornament,
+.frame-bottom-ornament {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 24px;
+  z-index: 3;
+}
+
+.frame-top-ornament {
+  top: -17px;
+}
+
+.frame-bottom-ornament {
+  bottom: -17px;
+}
+
+/* FALLING PETALS */
+
+.petal-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.petal {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 15px;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(
+    135deg,
+    #e8c4b9,
+    #a94759
+  );
+  box-shadow: 0 0 5px rgba(255,255,255,.15);
+}
+
+@media (max-width: 480px) {
+  .flower-ornament {
+    width: 125px;
+  }
+
+  .vintage-frame {
+    width: 75%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal-container {
+    display: none;
+  }
+}
+
+/* SECTION GENERAL */
+
+.section-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 5px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 7vw, 45px);
+  font-weight: 400;
+  color: var(--champagne);
+  margin: 20px 0;
+}
+
+.countdown-divider {
+  color: var(--gold);
+  font-size: 24px;
+  margin: 25px 0;
+}
+
+/* COUNTDOWN - FULL SCREEN RESPONSIVE */
+
+.countdown-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    #300c18 0%,
+    #45101f 50%,
+    #541525 100%
+  );
+
+  color: var(--champagne);
+}
+
+.countdown-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* COUNTDOWN GRID */
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.countdown-item {
+  min-width: 0;
+  text-align: center;
+}
+
+.countdown-number {
+  font-size: clamp(26px, 6vw, 42px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.countdown-item span {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(9px, 2.5vw, 12px);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* COUPLE NAME */
+
+.countdown-couple-name {
+  margin-top: 40px;
+  margin-bottom: 8px;
+  color: var(--champagne);
+}
+
+/* WEDDING RING */
+
+.countdown-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto 0;
+}
+
+.countdown-ring-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .countdown-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 35px 18px;
+  }
+
+  .countdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .countdown-grid {
+    gap: 5px;
+  }
+
+  .countdown-number {
+    font-size: clamp(25px, 7vw, 32px);
+  }
+
+  .countdown-item span {
+    font-size: clamp(8px, 2.5vw, 10px);
+    letter-spacing: 1px;
+  }
+
+  .countdown-couple-name {
+    margin-top: 35px;
+    font-size: clamp(32px, 9vw, 44px);
+  }
+
+  .countdown-ring-image {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* =========================================
+   GROOM & BRIDE SECTION
+========================================= */
+
+.couple-section {
+  position: relative;
+  padding: 110px 20px;
+  background: linear-gradient(
+    180deg,
+    #300c18 0%,
+    #541525 100%
+  );
+  color: var(--champagne);
+  overflow: hidden;
+}
+
+.couple-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.couple-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 65px;
+}
+
+.couple-section .section-title {
+  color: var(--champagne);
+}
+
+.couple-description {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  line-height: 1.7;
+  color: rgba(255, 249, 237, 0.8);
+}
+
+.couple-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 55px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.couple-card {
+  text-align: center;
+}
+
+.couple-photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  height: 420px;
+  margin: 0 auto 35px;
+  padding: 12px;
+  border: 1px solid var(--gold);
+  background: rgba(255, 249, 237, 0.04);
+}
+
+.couple-photo-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(214, 180, 106, 0.5);
+}
+
+.couple-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s ease;
+}
+
+.couple-card:hover .couple-photo {
+  transform: scale(1.06);
+}
+
+.couple-photo-ornament {
+  position: absolute;
+  color: var(--gold);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.couple-photo-frame .top-left {
+  top: -14px;
+  left: -10px;
+}
+
+.couple-photo-frame .top-right {
+  top: -14px;
+  right: -10px;
+  transform: rotate(90deg);
+}
+
+.couple-photo-frame .bottom-left {
+  bottom: -14px;
+  left: -10px;
+  transform: rotate(-90deg);
+}
+
+.couple-photo-frame .bottom-right {
+  bottom: -14px;
+  right: -10px;
+  transform: rotate(180deg);
+}
+
+.couple-role {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.couple-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 600;
+  color: var(--champagne);
+  line-height: 1.2;
+}
+
+.couple-nickname {
+  margin-top: 8px;
+  color: rgba(255, 249, 237, 0.7);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+.couple-divider {
+  color: var(--gold);
+  font-size: 23px;
+  margin: 18px 0;
+}
+
+.couple-parents {
+  min-height: 55px;
+  color: rgba(255, 249, 237, 0.8);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.couple-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+  padding: 11px 20px;
+  border: 1px solid rgba(214, 180, 106, 0.7);
+  color: var(--gold);
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.couple-instagram:hover {
+  background: var(--gold);
+  color: var(--dark-maroon);
+}
+
+.couple-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 75px;
+  color: var(--gold);
+}
+
+.couple-symbol span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.couple-symbol div {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-style: italic;
+}
+
+
+/* =========================================
+   COUPLE RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .couple-section {
+    padding: 80px 20px;
+  }
+
+  .couple-heading {
+    margin-bottom: 50px;
+  }
+
+  .couple-grid {
+    grid-template-columns: 1fr;
+    gap: 65px;
+  }
+
+  .couple-photo-frame {
+    max-width: 310px;
+    height: 390px;
+  }
+
+  .couple-symbol {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 420px) {
+  .couple-photo-frame {
+    max-width: 280px;
+    height: 360px;
+  }
+
+  .couple-name {
+    font-size: 30px;
+  }
+}
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  background: rgba(20, 4, 10, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 850px;
+  max-height: 85vh;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border: 1px solid var(--gold);
+  padding: 7px;
+  background: #300c18;
+}
+
+.lightbox-caption {
+  margin-top: 18px;
+  color: var(--champagne);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-style: italic;
+}
+
+.lightbox-counter {
+  margin-top: 7px;
+  color: var(--gold);
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: rgba(84, 21, 37, 0.7);
+  border: 1px solid rgba(214, 180, 106, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  background: var(--gold);
+  color: var(--dark-maroon);
+}
+
+.lightbox-close {
+  top: 25px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+}
+
+.lightbox-nav {
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
+}
+
+.lightbox-prev {
+  left: 25px;
+}
+
+.lightbox-next {
+  right: 25px;
+}
+
+
+/* =========================================
+   GALLERY RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 150px;
+    gap: 12px;
+  }
+
+  .gallery-item-5 {
+    grid-column: span 1;
+  }
+
+  .gallery-overlay {
+    opacity: 1;
+    font-size: 17px;
+  }
+
+  .lightbox {
+    padding: 60px 45px;
+  }
+
+  .lightbox-prev {
+    left: 5px;
+  }
+
+  .lightbox-next {
+    right: 5px;
+  }
+
+  .lightbox-nav {
+    width: 35px;
+    height: 35px;
+  }
+
+  .lightbox-image {
+    max-height: 65vh;
+  }
+}
+
+@media (max-width: 420px) {
+  .gallery-grid {
+    grid-auto-rows: 130px;
+  }
+
+  .lightbox {
+    padding: 60px 40px;
+  }
+
+  .lightbox-close {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+/* =========================================
+   FOTO LATAR OPENING COVER
+========================================= */
+
+.cover-inner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Lapisan foto dan warna maroon */
+.cover-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      rgba(48, 12, 24, 0.30),
+      rgba(48, 12, 24, 0.45)
+    ),
+    url("/images/cover.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Pastikan seluruh isi bingkai berada di atas foto */
+.cover-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   HERO VINTAGE FLORAL FRAME
+========================================= */
+
+.hero-frame-stage {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  margin: 35px auto 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bingkai luar */
+.vintage-frame {
+  position: relative;
+  width: min(78vw, 340px);
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* Lapisan bingkai emas */
+.frame-outer {
+  position: relative;
+  padding: 13px;
+  background: linear-gradient(
+    135deg,
+    #f5df9b,
+    #b58a3b,
+    #f9e8b5,
+    #a77b32,
+    #e7c779
+  );
+  border: 1px solid #f8e6b5;
+  box-shadow:
+    0 0 0 3px #541525,
+    0 0 0 5px #d6b46a,
+    0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Bingkai bagian dalam */
+.frame-inner {
+  position: relative;
+  overflow: hidden;
+  padding: 5px;
+  background: #fff4d8;
+  border: 1px solid #9d7132;
+}
+
+/* Foto pasangan */
+.frame-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #d6b46a;
+}
+
+/* Ornamen sudut */
+.frame-corner {
+  position: absolute;
+  z-index: 3;
+  color: #fff0bd;
+  font-family: serif;
+  font-size: 36px;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(48, 12, 24, 0.5);
+}
+
+.frame-corner.top-left {
+  top: 5px;
+  left: 5px;
+}
+
+.frame-corner.top-right {
+  top: 5px;
+  right: 5px;
+  transform: scaleX(-1);
+}
+
+.frame-corner.bottom-left {
+  bottom: 5px;
+  left: 5px;
+  transform: scaleY(-1);
+}
+
+.frame-corner.bottom-right {
+  bottom: 5px;
+  right: 5px;
+  transform: scale(-1);
+}
+
+/* Ornamen atas dan bawah */
+.frame-top-ornament,
+.frame-bottom-ornament {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  color: #fff0bd;
+  font-size: 25px;
+  text-shadow: 0 2px 4px rgba(48, 12, 24, 0.5);
+}
+
+.frame-top-ornament {
+  top: -17px;
+}
+
+.frame-bottom-ornament {
+  bottom: -17px;
+}
+
+/* =========================================
+   BUNGA BERGERAK DI SEKITAR FOTO
+========================================= */
+
+.floating-flower {
+  position: absolute;
+  z-index: 4;
+  color: #e9c77c;
+  font-family: serif;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flower-left {
+  top: 17%;
+  left: 3%;
+  font-size: 55px;
+}
+
+.flower-right {
+  top: 25%;
+  right: 3%;
+  font-size: 48px;
+  color: #f3dfb0;
+}
+
+.flower-small-left {
+  bottom: 17%;
+  left: 10%;
+  font-size: 32px;
+  color: #f3dfb0;
+}
+
+.flower-small-right {
+  bottom: 12%;
+  right: 10%;
+  font-size: 35px;
+}
+
+/* Tampilan HP */
+@media (max-width: 480px) {
+  .hero-frame-stage {
+    max-width: 100%;
+    margin: 30px auto 40px;
+  }
+
+  .vintage-frame {
+    width: min(75vw, 300px);
+  }
+
+  .flower-left {
+    left: 1%;
+    font-size: 42px;
+  }
+
+  .flower-right {
+    right: 1%;
+    font-size: 40px;
+  }
+
+  .flower-small-left {
+    left: 5%;
+    font-size: 27px;
+  }
+
+  .flower-small-right {
+    right: 5%;
+    font-size: 28px;
+  }
+}
+
+
+/* =========================================
+   GALLERY - MATCH COUPLE SECTION
+========================================= */
+
+.gallery-section {
+  position: relative;
+  padding: 110px 20px;
+  background: linear-gradient(
+    180deg,
+    #300c18 0%,
+    #541525 100%
+  );
+  color: var(--champagne);
+  overflow: hidden;
+}
+
+.gallery-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* HEADING */
+
+.gallery-heading {
+  max-width: 650px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.gallery-heading .section-subtitle {
+  color: var(--gold);
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+}
+
+.gallery-heading .section-title {
+  color: var(--champagne);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 500;
+  margin: 0;
+}
+
+.gallery-heading-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 22px 0;
+  color: var(--gold);
+}
+
+.gallery-heading-divider::before,
+.gallery-heading-divider::after {
+  content: "";
+  width: 55px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.65;
+}
+
+.gallery-heading-divider span {
+  font-size: 18px;
+}
+
+.gallery-description {
+  max-width: 440px;
+  margin: 0 auto;
+  color: rgba(255, 249, 237, 0.8);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.gallery-photo-frame {
+  position: relative;
+  padding: 7px;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #f5df9b,
+    #b58a3b,
+    #fff0c5,
+    #a77b32
+  );
+  border: 1px solid #f3dfad;
+  box-shadow:
+    0 0 0 3px #541525,
+    0 0 0 4px var(--gold),
+    0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-slide:hover .gallery-image {
+  transform: scale(1.07);
+}
+
+.gallery-slide:hover .gallery-overlay {
+  opacity: 1;
+}
+
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 80px 18px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 calc((100% - 16px) / 2);
+  }
+
+  .gallery-slider {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-section {
+    padding: 65px 14px;
+  }
+
+  .gallery-heading {
+    margin-bottom: 35px;
+  }
+
+  .gallery-heading .section-title {
+    font-size: 43px;
+  }
+
+  .gallery-description {
+    font-size: 18px;
+  }
+
+  .gallery-slider {
+    gap: 13px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 calc((100% - 13px) / 2);
+  }
+
+  .gallery-arrow {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+
+
+/* =========================================
+   AUTOMATIC PHOTO SLIDER
+========================================= */
+
+.gallery-slider-wrapper {
+  display: none;
+}
+
+.gallery-slider {
+  display: flex;
+  gap: 22px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 15px 6px 25px;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  cursor: grab;
+}
+
+.gallery-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slider:active {
+  cursor: grabbing;
+}
+
+.gallery-slide {
+  flex: 0 0 calc((100% - 66px) / 4);
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.gallery-photo-frame {
+  position: relative;
+  padding: 7px;
+  overflow: hidden;
+
+background: linear-gradient(
+  180deg,
+  #300c18 0%,
+  #45101f 50%,
+  #541525 100%
+);
+
+  border: 1px solid #f3dfad;
+
+  box-shadow:
+    0 0 0 3px #541525,
+    0 0 0 4px var(--gold),
+    0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-slide:hover .gallery-image {
+  transform: scale(1.07);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff0c5;
+  background: rgba(48, 12, 24, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-slide:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-hint {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  color: var(--champagne);
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  opacity: 0.65;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .gallery-slider {
+    gap: 16px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 calc((100% - 16px) / 2);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-slider {
+    gap: 13px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 calc((100% - 13px) / 2);
+  }
+}
+
+/* LIGHTBOX SWIPE */
+.lightbox-content {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lightbox-image {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* LIGHTBOX CLOSE BUTTON */
+.lightbox-close {
+  z-index: 100;
+}
+/* =========================================
+   SUBTLE DIVIDER COUPLE & GALLERY
+========================================= */
+
+
+/* =========================================
+   WEDDING DETAILS - BURGUNDY VINTAGE LUXURY
+   MATCH PHOTO GALLERY
+========================================= */
+
+.details-section {
+  position: relative;
+  isolation: isolate;
+  padding: 110px 20px;
+  margin-top: -1px;
+  background: linear-gradient(
+    180deg,
+    #541525 0%,
+    #45101f 50%,
+    #300c18 100%
+  );
+  color: var(--champagne);
+  overflow: hidden;
+  border-top: 1px solid rgba(214, 180, 106, 0.12);
+}
+
+.details-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* GOLD DIVIDER */
+
+.details-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(214, 180, 106, 0.45),
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(214, 180, 106, 0.12);
+  pointer-events: none;
+}
+
+/* HEADING */
+
+.details-heading {
+  max-width: 650px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.details-section .section-subtitle {
+  color: var(--gold);
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+}
+
+.details-section .section-title {
+  color: var(--champagne);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 500;
+  margin: 0;
+}
+
+.details-description {
+  max-width: 440px;
+  margin: 22px auto 0;
+  color: rgba(255, 249, 237, 0.8);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+/* EVENT GRID */
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* EVENT CARD */
+
+.event-card {
+  position: relative;
+  padding: 45px 30px;
+  text-align: center;
+  background: linear-gradient(
+    145deg,
+    #fffdf7 0%,
+    #f7ead7 100%
+  );
+  border: 1px solid rgba(185, 149, 91, 0.8);
+  outline: 1px solid rgba(185, 149, 91, 0.35);
+  outline-offset: 5px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* EVENT ICON */
+
+.event-icon {
+  color: #a47b3f;
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+/* EVENT TITLE */
+
+.event-card h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #541525;
+  margin: 20px 0;
+}
+
+/* DIVIDER */
+
+.event-divider {
+  color: #b9955b;
+  font-size: 25px;
+  margin: 15px 0 25px;
+}
+
+/* EVENT INFORMATION */
+
+.event-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0;
+  color: #68434b;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+}
+
+.event-info svg {
+  flex-shrink: 0;
+  color: #a47b3f;
+}
+
+/* ADDRESS */
+
+.event-address {
+  margin: 15px 0 25px;
+  color: #8a7074;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* GOOGLE MAPS BUTTON */
+
+.maps-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 25px;
+  border: 1px solid #98713d;
+  background: #541525;
+  color: var(--champagne);
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.maps-button:hover {
+  background: var(--gold);
+  color: var(--dark-maroon);
+  border-color: var(--gold);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .details-section {
+    padding: 80px 18px;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    gap: 25px;
+  }
+
+  .event-card {
+    padding: 35px 22px;
+  }
+
+  .details-description {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-section {
+    padding: 65px 14px;
+  }
+
+  .details-heading {
+    margin-bottom: 35px;
+  }
+
+  .details-section .section-title {
+    font-size: 43px;
+  }
+
+  .event-card h3 {
+    font-size: 28px;
+  }
+
+  .event-info {
+    font-size: 12px;
+  }
+}
+
+.countdown-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 15px auto 0;
+}
+
+.countdown-ring-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* PEMBATAS HERO DAN COUPLE */
+.hero-section {
+  position: relative;
+}
+
+/* GARIS PEMBATAS HERO DAN COUPLE */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  opacity: 0.7;
+}
+
+.couple-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.couple-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.couple-ring-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.couple-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.couple-ring .countdown-ring-image {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* =========================================
+   RSVP SECTION - BURGUNDY GLASS LUXURY
+========================================= */
+
+.rsvp-section {
+  position: relative;
+  padding: 110px 20px;
+  background: linear-gradient(
+    180deg,
+    #541525 0%,
+    #45101f 50%,
+    #300c18 100%
+  );
+  color: var(--champagne);
+  overflow: hidden;
+}
+
+/* PEMBATAS ATAS */
+
+.rsvp-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 78%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+
+  opacity: 0.9;
+}
+
+/* CONTAINER */
+
+.rsvp-container {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.rsvp-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.rsvp-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #a17b3e;
+  margin-bottom: 12px;
+}
+
+.rsvp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 7vw, 45px);
+  font-weight: 400;
+  color: var(--champagne);
+  margin: 20px 0;
+}
+.rsvp-divider {
+  color: var(--gold);
+  font-size: 22px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.rsvp-description {
+  max-width: 440px;
+  margin: 22px auto 0;
+  color: rgba(255, 249, 237, 0.8);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   GLASS FORM
+========================================= */
+
+.rsvp-form-wrapper {
+  position: relative;
+  padding: 38px;
+
+  background: rgba(255, 249, 237, 0.13);
+  border: 1px solid rgba(255, 239, 205, 0.42);
+
+  border-radius: 5px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 15px 45px rgba(30, 5, 15, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.rsvp-form-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+
+  border: 1px solid rgba(214, 180, 106, 0.25);
+  pointer-events: none;
+}
+
+.rsvp-form {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+/* =========================================
+   FORM INPUT
+========================================= */
+
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.rsvp-field label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  color: var(--champagne);
+}
+
+.rsvp-field input,
+.rsvp-field select,
+.rsvp-field textarea {
+  width: 100%;
+  padding: 14px 15px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--champagne);
+
+  background: rgba(48, 12, 24, 0.35);
+
+  border: 1px solid rgba(214, 180, 106, 0.45);
+  border-radius: 3px;
+
+  outline: none;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.rsvp-field input::placeholder,
+.rsvp-field textarea::placeholder {
+  color: rgba(255, 249, 237, 0.55);
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(48, 12, 24, 0.55);
+
+  box-shadow: 0 0 0 3px rgba(214, 180, 106, 0.12);
+}
+
+.rsvp-field select option {
+  background: var(--dark-maroon);
+  color: var(--champagne);
+}
+
+.rsvp-field textarea {
+  min-height: 125px;
+  line-height: 1.8;
+  resize: vertical;
+}
+
+.rsvp-character-count {
+  text-align: right;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  color: rgba(255, 249, 237, 0.65);
+}
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.rsvp-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+  padding: 15px 25px;
+  margin-top: 5px;
+
+  background: linear-gradient(
+    135deg,
+    #d6b46a,
+    #b18b48
+  );
+
+  border: 1px solid #f3dfaa;
+  border-radius: 3px;
+
+  color: var(--dark-maroon);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.rsvp-submit:hover {
+  background: var(--champagne);
+  transform: translateY(-2px);
+
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================
+   UCAPAN DAN DOA
+========================================= */
+
+.rsvp-messages-section {
+  margin-top: 75px;
+}
+
+.rsvp-messages-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.rsvp-messages-heading h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--champagne);
+}
+
+.rsvp-messages-heading p {
+  margin-top: 8px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  line-height: 1.8;
+
+  color: rgba(255, 249, 237, 0.72);
+}
+
+/* =========================================
+   EMPTY MESSAGE
+========================================= */
+
+.rsvp-empty {
+  padding: 35px 20px;
+  text-align: center;
+
+  background: rgba(255, 249, 237, 0.08);
+  border: 1px dashed rgba(214, 180, 106, 0.5);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.rsvp-empty span {
+  font-size: 30px;
+  color: var(--gold);
+}
+
+.rsvp-empty p {
+  margin-top: 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: var(--champagne);
+}
+
+/* =========================================
+   MESSAGE LIST
+========================================= */
+
+.rsvp-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rsvp-message-card {
+  position: relative;
+  padding: 23px;
+
+  background: rgba(255, 249, 237, 0.10);
+  border: 1px solid rgba(214, 180, 106, 0.35);
+  border-radius: 4px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.rsvp-message-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.rsvp-message-top h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--champagne);
+}
+
+.rsvp-message-top span:not(.rsvp-status) {
+  display: block;
+  margin-top: 5px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  color: rgba(255, 249, 237, 0.6);
+}
+
+/* STATUS */
+
+.rsvp-status {
+  padding: 7px 11px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  white-space: nowrap;
+  border-radius: 2px;
+}
+
+.status-present {
+  background: rgba(137, 180, 120, 0.2);
+  border: 1px solid rgba(173, 214, 155, 0.4);
+  color: #d4edc8;
+}
+
+.status-absent {
+  background: rgba(220, 130, 130, 0.15);
+  border: 1px solid rgba(220, 130, 130, 0.35);
+  color: #ffd0d0;
+}
+
+.rsvp-guest-count {
+  margin-top: 9px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  color: rgba(255, 249, 237, 0.7);
+}
+
+/* MESSAGE TEXT */
+
+.rsvp-message-text {
+  margin-top: 17px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.9;
+
+  color: rgba(255, 249, 237, 0.9);
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.rsvp-message-ornament {
+  margin-top: 13px;
+  text-align: right;
+
+  color: var(--gold);
+  font-size: 13px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+  .rsvp-section {
+    padding: 75px 18px 65px;
+  }
+
+  .rsvp-title {
+    font-size: 43px;
+  }
+
+  .rsvp-description {
+    font-size: 11px;
+  }
+
+  .rsvp-form-wrapper {
+    padding: 28px 20px;
+  }
+
+  .rsvp-form {
+    gap: 20px;
+  }
+
+  .rsvp-messages-heading h3 {
+    font-size: 32px;
+  }
+
+  .rsvp-message-card {
+    padding: 18px;
+  }
+
+  .rsvp-message-top h4 {
+    font-size: 19px;
+  }
+}
+
+/* =================================
+   FOOTER SECTION
+================================= */
+
+.footer-section {
+  position: relative;
+  padding: 80px 20px 45px;
+  background: linear-gradient(
+    180deg,
+    #300c18 0%,
+    #541525 100%
+  );
+  color: var(--champagne);
+  overflow: hidden;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Divider */
+
+.footer-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 45px;
+}
+
+.footer-divider span:not(.footer-divider-icon) {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold)
+  );
+}
+
+.footer-divider span:last-child {
+  transform: rotate(180deg);
+}
+
+.footer-divider-icon {
+  color: var(--gold);
+  font-size: 20px;
+}
+
+/* Closing Text */
+
+.footer-closing {
+  margin-bottom: 55px;
+}
+
+.footer-closing p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  line-height: 1.65;
+  color: var(--champagne);
+  letter-spacing: 0.5px;
+}
+
+/* Family */
+
+.footer-happy {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 35px;
+}
+
+.footer-family-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 55px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.footer-family {
+  padding: 10px 15px;
+}
+
+.footer-family h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.footer-family-line {
+  width: 65px;
+  height: 1px;
+  background: var(--gold);
+  margin: 18px auto 22px;
+}
+
+.footer-family p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--champagne);
+  margin-bottom: 5px;
+}
+
+/* Couple Closing */
+
+.footer-couple {
+  margin-top: 75px;
+}
+
+.footer-with-love {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+.footer-couple-divider {
+  margin: 20px 0;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.footer-couple h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(48px, 8vw, 75px);
+  font-weight: 500;
+  color: var(--champagne);
+  line-height: 1.1;
+}
+
+.footer-couple h2 span {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Bottom */
+
+.footer-bottom {
+  margin-top: 65px;
+  color: var(--gold);
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 65px 20px 35px;
+  }
+
+  .footer-closing p {
+    font-size: 20px;
+  }
+
+  .footer-family-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .footer-family h3 {
+    font-size: 16px;
+  }
+
+  .footer-family p {
+    font-size: 18px;
+  }
+
+  .footer-happy {
+    font-size: 23px;
+  }
+
+  .footer-couple {
+    margin-top: 55px;
+  }
+
+  .footer-divider span:not(.footer-divider-icon) {
+    width: 65px;
+  }
+}
+
+/* Nama Tamu Undangan */
+
+.cover-guest {
+  margin: 25px 0 30px;
+  text-align: center;
+}
+
+.cover-guest p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--champagne);
+  margin-bottom: 8px;
+}
+
+.cover-guest h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(21px, 4vw, 27px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--gold);
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
