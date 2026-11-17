@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 
@@ -27,6 +27,11 @@ export default function RSVPSection() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // REF UNTUK AUTO SCROLL
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isPausedRef = useRef(false);
+
   // MENGAMBIL DATA RSVP DARI SUPABASE
   const fetchMessages = async () => {
     setIsLoading(true);
@@ -50,6 +55,72 @@ export default function RSVPSection() {
   // MEMUAT DATA KETIKA KOMPONEN DIBUKA
   useEffect(() => {
     fetchMessages();
+  }, []);
+
+  // AUTO SCROLL UCAPAN
+  useEffect(() => {
+    if (isLoading || messages.length <= 2) return;
+
+    const container = messagesContainerRef.current;
+
+    if (!container) return;
+
+    const interval = setInterval(() => {
+      if (isPausedRef.current) return;
+
+      const cards = container.querySelectorAll(
+        ".rsvp-message-card"
+      );
+
+      if (cards.length <= 2) return;
+
+      const firstCard = cards[0] as HTMLElement;
+
+      const nextPosition =
+        container.scrollTop +
+        firstCard.offsetHeight +
+        20;
+
+      // KEMBALI KE AWAL JIKA SUDAH DI AKHIR
+      if (
+        container.scrollTop + container.clientHeight >=
+        container.scrollHeight - 10
+      ) {
+        container.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } else {
+        container.scrollTo({
+          top: nextPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [messages, isLoading]);
+
+  // PAUSE AUTO SCROLL KETIKA PENGUNJUNG SCROLL MANUAL
+  const pauseAutoScroll = () => {
+    isPausedRef.current = true;
+
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current);
+    }
+
+    pauseTimeoutRef.current = setTimeout(() => {
+      isPausedRef.current = false;
+    }, 8000);
+  };
+
+  // MEMBERSIHKAN TIMEOUT
+  useEffect(() => {
+    return () => {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+    };
   }, []);
 
   // MENGIRIM RSVP KE SUPABASE
@@ -100,10 +171,26 @@ export default function RSVPSection() {
     setGuestCount("1");
     setMessage("");
 
-    setSuccess("Terima kasih! Konfirmasi dan ucapan Anda berhasil dikirim.");
+    setSuccess(
+      "Terima kasih! Konfirmasi dan ucapan Anda berhasil dikirim."
+    );
 
     // PERBARUI DAFTAR UCAPAN
     await fetchMessages();
+
+    // KEMBALI KE KOMENTAR TERBARU
+    isPausedRef.current = false;
+
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current);
+    }
+
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
 
     setIsSubmitting(false);
   };
@@ -296,7 +383,21 @@ export default function RSVPSection() {
             </p>
           </motion.div>
 
-          <div className="rsvp-messages-list">
+          <div
+            ref={messagesContainerRef}
+            className="rsvp-messages-list"
+            onWheel={pauseAutoScroll}
+            onTouchStart={pauseAutoScroll}
+            onPointerDown={pauseAutoScroll}
+            style={{
+              maxHeight: "430px",
+              overflowY: "auto",
+              overflowX: "hidden",
+              scrollBehavior: "smooth",
+              overscrollBehavior: "contain",
+              paddingRight: "8px",
+            }}
+          >
 
             {isLoading ? (
               <div className="rsvp-empty">
@@ -322,6 +423,7 @@ export default function RSVPSection() {
                   <div className="rsvp-message-top">
                     <div>
                       <h4>{item.nama}</h4>
+
                       <span>
                         {formatDate(item.created_at)}
                       </span>
@@ -356,6 +458,21 @@ export default function RSVPSection() {
             )}
 
           </div>
+
+          {/* PETUNJUK SCROLL */}
+          {!isLoading && messages.length > 2 && (
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "12px",
+                opacity: 0.7,
+                marginTop: "12px",
+              }}
+            >
+              ↕ Gulir untuk melihat ucapan lainnya
+            </p>
+          )}
+
         </div>
 
       </div>
