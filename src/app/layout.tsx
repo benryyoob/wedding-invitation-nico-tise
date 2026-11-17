@@ -24,26 +24,36 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "The Wedding of Nico & Tise",
+
     description:
       "Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami.",
+
     url: siteUrl,
+
     siteName: "The Wedding of Nico & Tise",
+
     locale: "id_ID",
+
     type: "website",
+
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.jpeg",
         width: 630,
         height: 1200,
         alt: "The Wedding of Nico & Tise",
+        type: "image/jpeg",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
+
     title: "The Wedding of Nico & Tise",
+
     description: "The Wedding of Nico & Tise",
+
     images: ["/og-image.jpeg"],
   },
 
