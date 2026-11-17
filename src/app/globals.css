@@ -158,12 +158,18 @@ body {
   min-height: 100svh;
   padding: 80px 20px;
   text-align: center;
-  background:
+
+  background-color: #541525;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cdefs%3E%3ClinearGradient id='wave' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%237b3547'/%3E%3Cstop offset='35%25' stop-color='%23401626'/%3E%3Cstop offset='75%25' stop-color='%233b101e'/%3E%3Cstop offset='100%25' stop-color='%2363293a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%23260912' stroke-width='2.5' opacity='.45'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60' transform='translate(0 1.5)'/%3E%3C/g%3E%3Cg stroke='url(%23wave)' stroke-width='2'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
     linear-gradient(
       180deg,
       #541525,
       #310d19
     );
+
+  background-size: 150px 75px, cover;
+  background-repeat: repeat, no-repeat;
 }
 
 .hero-content {
@@ -610,11 +616,19 @@ body {
 .couple-section {
   position: relative;
   padding: 110px 20px;
-  background: linear-gradient(
-    180deg,
-    #300c18 0%,
-    #541525 100%
-  );
+
+  background-color: #300c18;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cdefs%3E%3ClinearGradient id='wave' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%234c1b2b'/%3E%3Cstop offset='40%25' stop-color='%23280a15'/%3E%3Cstop offset='75%25' stop-color='%23250913'/%3E%3Cstop offset='100%25' stop-color='%23401626'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%231b0610' stroke-width='2.5' opacity='.5'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60' transform='translate(0 1.5)'/%3E%3C/g%3E%3Cg stroke='url(%23wave)' stroke-width='2'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(
+      180deg,
+      #300c18 0%,
+      #541525 100%
+    );
+
+  background-size: 150px 75px, cover;
+  background-repeat: repeat, no-repeat;
+
   color: var(--champagne);
   overflow: hidden;
 }
@@ -1210,11 +1224,19 @@ body {
 .gallery-section {
   position: relative;
   padding: 110px 20px;
-  background: linear-gradient(
-    180deg,
-    #300c18 0%,
-    #541525 100%
-  );
+
+  background-color: #300c18;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cdefs%3E%3ClinearGradient id='wave' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%234c1b2b'/%3E%3Cstop offset='40%25' stop-color='%23280a15'/%3E%3Cstop offset='75%25' stop-color='%23250913'/%3E%3Cstop offset='100%25' stop-color='%23401626'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%231b0610' stroke-width='2.5' opacity='.5'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60' transform='translate(0 1.5)'/%3E%3C/g%3E%3Cg stroke='url(%23wave)' stroke-width='2'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(
+      180deg,
+      #300c18 0%,
+      #541525 100%
+    );
+
+  background-size: 150px 75px, cover;
+  background-repeat: repeat, no-repeat;
+
   color: var(--champagne);
   overflow: hidden;
 }
@@ -1515,12 +1537,20 @@ background: linear-gradient(
   isolation: isolate;
   padding: 110px 20px;
   margin-top: -1px;
-  background: linear-gradient(
-    180deg,
-    #541525 0%,
-    #45101f 50%,
-    #300c18 100%
-  );
+
+  background-color: #45101f;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cdefs%3E%3ClinearGradient id='wave' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%2360273a'/%3E%3Cstop offset='40%25' stop-color='%23340c1b'/%3E%3Cstop offset='75%25' stop-color='%232b0a16'/%3E%3Cstop offset='100%25' stop-color='%234d192c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%231b0610' stroke-width='2.5' opacity='.5'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60' transform='translate(0 1.5)'/%3E%3C/g%3E%3Cg stroke='url(%23wave)' stroke-width='2'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(
+      180deg,
+      #541525 0%,
+      #45101f 50%,
+      #300c18 100%
+    );
+
+  background-size: 150px 75px, cover;
+  background-repeat: repeat, no-repeat;
+
   color: var(--champagne);
   overflow: hidden;
   border-top: 1px solid rgba(214, 180, 106, 0.12);
@@ -1824,12 +1854,20 @@ background: linear-gradient(
 .rsvp-section {
   position: relative;
   padding: 110px 20px;
-  background: linear-gradient(
-    180deg,
-    #541525 0%,
-    #45101f 50%,
-    #300c18 100%
-  );
+
+  background-color: #45101f;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cdefs%3E%3ClinearGradient id='wave' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%234c1b2b'/%3E%3Cstop offset='40%25' stop-color='%23280a15'/%3E%3Cstop offset='75%25' stop-color='%23250913'/%3E%3Cstop offset='100%25' stop-color='%23401626'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%231b0610' stroke-width='2.5' opacity='.5'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60' transform='translate(0 1.5)'/%3E%3C/g%3E%3Cg stroke='url(%23wave)' stroke-width='2'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(
+      180deg,
+      #541525 0%,
+      #45101f 50%,
+      #300c18 100%
+    );
+
+  background-size: 150px 75px, cover;
+  background-repeat: repeat, no-repeat;
+
   color: var(--champagne);
   overflow: hidden;
 }
@@ -2265,11 +2303,19 @@ background: linear-gradient(
 .footer-section {
   position: relative;
   padding: 80px 20px 45px;
-  background: linear-gradient(
-    180deg,
-    #300c18 0%,
-    #541525 100%
-  );
+
+  background-color: #300c18;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cdefs%3E%3ClinearGradient id='wave' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%234c1b2b'/%3E%3Cstop offset='40%25' stop-color='%23280a15'/%3E%3Cstop offset='75%25' stop-color='%23250913'/%3E%3Cstop offset='100%25' stop-color='%23401626'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%231b0610' stroke-width='2.5' opacity='.5'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60' transform='translate(0 1.5)'/%3E%3C/g%3E%3Cg stroke='url(%23wave)' stroke-width='2'%3E%3Cpath d='M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M90 30 A30 30 0 0 1 150 30 M0 60 A30 30 0 0 1 60 60 M60 60 A30 30 0 0 1 120 60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(
+      180deg,
+      #300c18 0%,
+      #541525 100%
+    );
+
+  background-size: 150px 75px, cover;
+  background-repeat: repeat, no-repeat;
+
   color: var(--champagne);
   overflow: hidden;
   text-align: center;
