@@ -626,7 +626,7 @@ body {
       #541525 100%
     );
 
-  background-size: 150px 75px, cover;
+  background-size: 120px 80px, cover;
   background-repeat: repeat, no-repeat;
 
   color: var(--champagne);
@@ -1548,7 +1548,7 @@ background: linear-gradient(
       #300c18 100%
     );
 
-  background-size: 150px 75px, cover;
+  background-size: 120px 80px, cover;
   background-repeat: repeat, no-repeat;
 
   color: var(--champagne);
