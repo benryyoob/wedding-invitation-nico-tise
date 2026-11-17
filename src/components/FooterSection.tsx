@@ -54,8 +54,6 @@ export default function FooterSection() {
               </h3>
 
               <div className="footer-family-line"></div>
-
-              <p>Keluarga Mempelai Pria</p>
               <p>Keluarga Besar Obe</p>
               <p>Keluarga Besar Lake</p>
               <p>Keluarga Besar Laome</p>
